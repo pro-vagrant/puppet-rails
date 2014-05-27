@@ -24,7 +24,7 @@ class rails {
     command => "gem install --no-document rails",
     timeout => 6000,
     path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-    require => [Exec['rails::gem-update']]
+    require => [Exec['rails::gem-update', 'rails::gem-sqlite3']]
   }
 
 }
