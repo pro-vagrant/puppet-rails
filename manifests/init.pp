@@ -8,10 +8,16 @@ class rails {
     package { 'gem': ensure => present }
   }
 
+  exec { 'rails::gem-sqlite3':
+    command => "gem install sqlite3 -v '1.3.9'",
+    path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+    require => [Package['gem', 'libsqlite3-dev']]
+  }
+
   exec { 'rails::gem-update':
     command => "gem update --system",
     path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-    require => [Package['gem', 'libsqlite3-dev']]
+    require => [Package['gem'], Exec['rails::gem-sqlite3']]
   }
 
   exec { 'rails::rails':
@@ -19,12 +25,6 @@ class rails {
     timeout => 6000,
     path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
     require => [Exec['rails::gem-update']]
-  }
-
-  exec { 'rails::gem-sqlite3':
-    command => "gem install sqlite3 -v '1.3.9'",
-    path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-    require => [Exec['rails::rails']]
   }
 
 }
