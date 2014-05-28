@@ -8,10 +8,15 @@ class rails {
     package { 'gem': ensure => present }
   }
 
+  exec { 'rails::apt-get-update':
+    command => "apt-get update -y",
+    path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
+  }
+
   exec { 'rails::gem-update':
     command => "gem update --system",
     path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-    require => [Package['gem']]
+    require => [Exec['rails::apt-get-update'], Package['gem']]
   }
 
   exec { 'rails::gem-sqlite3':
