@@ -20,13 +20,14 @@ class rails {
   }
 
   exec { 'rails::gem-sqlite3':
-    command => "gem install --no-document sqlite3 -v '1.3.9'",
+    #command => "gem install --no-document sqlite3 -v '1.3.9'",
+    command => "gem install sqlite3 -v '1.3.9'",
     path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
     require => [Package['gem', 'libsqlite3-dev'], Exec['rails::gem-update']]
   }
 
   exec { 'rails::rails':
-    command => "gem install --no-document rails",
+    command => "gem install rails",
     timeout => 6000,
     path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
     require => [Exec['rails::gem-update', 'rails::gem-sqlite3']]
