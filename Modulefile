@@ -1,0 +1,8 @@
+name    'gajdaw-rails'
+version '0.2.0'
+source 'git://github.com/pro-vagrant/puppet-rails.git'
+author ' Włodzimierz Gajda'
+license 'MIT'
+summary 'The module to install rails'
+description 'The module to install rails'
+project_page 'https://github.com/pro-vagrant/puppet-rails'
