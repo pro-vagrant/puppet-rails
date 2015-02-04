@@ -5,8 +5,8 @@
   "summary": "The module installs ruby on rails framework.",
   "license": "MIT",
   "source": "git@github.com:pro-vagrant/puppet-rails.git",
-  "project_page": "https://github.com/pro-vagrant/puppet-rails",
-  "issues_url": "https://github.com/pro-vagrant/puppet-rails/issues",
+  "project_page": "https://github.com/puppet-by-examples/puppet-rails",
+  "issues_url": "https://github.com/puppet-by-examples/puppet-rails/issues",
   "tags": [
     "rails",
     "rail",
