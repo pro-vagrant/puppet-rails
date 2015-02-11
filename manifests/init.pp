@@ -1,5 +1,15 @@
 class rails {
 
+    #
+    # Handle platforms
+    #
+    if !(
+        ($::operatingsystem == 'Ubuntu' and $::lsbdistrelease == '14.04') or
+        ($::operatingsystem == 'Ubuntu' and $::lsbdistrelease == '12.04')
+    ) {
+        fail('Platform not supported.')
+    }
+
     if defined(Package['libsqlite3-dev']) == false {
         package { 'libsqlite3-dev': ensure => present }
     }
