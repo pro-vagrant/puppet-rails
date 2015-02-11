@@ -2,7 +2,7 @@
   "name": "gajdaw-rails",
   "version": "0.1.12",
   "author": "Włodzimierz Gajda",
-  "summary": "The module installs ruby on rails framework.",
+  "summary": "The module to install ruby on rails framework",
   "license": "MIT",
   "source": "git@github.com:pro-vagrant/puppet-rails.git",
   "project_page": "https://github.com/puppet-by-examples/puppet-rails",
@@ -12,13 +12,15 @@
     "rail",
     "ruby",
     "ruby on rails",
-    "install"
+    "install",
+    "gem"
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "12.04"
+        "12.04",
+        "14.04"
       ]
     }
   ],
