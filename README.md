@@ -21,9 +21,23 @@ To install the module run:
 
 ## Usage
 
-You can use the module running:
+You can use the module running the following command:
 
     sudo puppet apply -e 'include rails'
+
+You can also use the class in manifest:
+
+    include rails
+
+For example manifests refer to `examples/` directory.
+
+Note. Before applying `rails` class your system needs to be
+updated. You can do it using `gajdaw-ubuntu` class:
+
+    class { 'ubuntu': }
+    class { 'rails':
+         require => Class['ubuntu']
+    }
 
 ## Limitations
 
