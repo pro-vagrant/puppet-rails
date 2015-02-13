@@ -27,6 +27,11 @@
   "requirements": [
       { "name": "puppet", "version_requirement": "3.x" }
   ],
-  "dependencies": []
+  "dependencies": [
+    {
+      "name": "gajdaw/diverse_functions",
+      "version_requirement": ">=0.1.1"
+    }
+  ]
 }
 
