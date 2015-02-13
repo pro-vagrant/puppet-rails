@@ -31,17 +31,11 @@ class rails {
         package { 'gem': ensure => present }
     }
 
-    exec { 'rails::gem-update':
-        command => 'gem update --system',
-        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-        require => [Package['gem']]
-    }
-
     exec { 'rails::rails':
         command => 'gem install rails',
         timeout => 6000,
         path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-        require => [Exec['rails::gem-update']]
+        require => Package['gem']
     }
 
     exec { 'rails::gem-sqlite3':
