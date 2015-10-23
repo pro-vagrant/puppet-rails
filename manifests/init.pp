@@ -37,6 +37,12 @@ class rails {
         require => Package['gem']
     }
 
+    exec { 'rails::rspec':
+        command => 'gem install rspec',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => Package['gem']
+    }
+
     exec { 'rails::gem-sqlite3':
         command => 'gem install sqlite3 -v "1.3.9"',
         path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
