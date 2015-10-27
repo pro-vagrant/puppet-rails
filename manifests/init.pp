@@ -39,20 +39,11 @@ class rails {
         'database_cleaner',
         'capybara',
         'nokogiri',
-        {
-            'gem' => 'rspec-rails',
-            'ver' => '~> 3.0'
-        },
-        {
-            'gem' => 'mysql2'
-            'ver' => '~> 0.3.20'
-        },
-        {
-            'gem' => 'sqlite3'
-            'ver' => '1.3.9'
-        }
+        { 'rspec-rails' => '~> 3.0' },
+        { 'mysql2'      => '~> 0.3.20' },
+        { 'sqlite3'     => '1.3.9' }
     ]
 
-    rails::install_gem { $gems: }
+    rails::gems { $gems: }
 
 }
