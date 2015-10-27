@@ -50,12 +50,6 @@ class rails {
         require => [Package['gem'], Exec['rails::rails']]
     }
 
-    exec { 'rails::gem-sqlite3':
-        command => 'gem install sqlite3 -v "1.3.9"',
-        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-        require => [Package['gem', 'libsqlite3-dev'], Exec['rails::rails']]
-    }
-
     exec { 'rails::cucumber-rails':
         command => 'gem install cucumber-rails',
         path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
@@ -92,5 +86,10 @@ class rails {
         require => [Package['gem', 'libmysqlclient-dev'], Exec['rails::rails']]
     }
 
+    exec { 'rails::gem-sqlite3':
+        command => 'gem install sqlite3 -v "1.3.9"',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => [Package['gem', 'libsqlite3-dev'], Exec['rails::rails']]
+    }
 
 }
