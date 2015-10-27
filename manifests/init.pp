@@ -26,6 +26,10 @@ class rails {
         package { 'libsqlite3-dev': ensure => present }
     }
 
+    if defined(Package['libmysqlclient-dev']) == false {
+        package { 'libmysqlclient-dev': ensure => present }
+    }
+
     if defined(Package['gem']) == false {
         package { 'gem': ensure => present }
     }
@@ -40,13 +44,13 @@ class rails {
     exec { 'rails::rspec':
         command => 'gem install rspec',
         path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-        require => Package['gem']
+        require => [Package['gem'], Exec['rails::rails']]
     }
 
     exec { 'rails::cucumber':
         command => 'gem install cucumber',
         path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
-        require => Package['gem']
+        require => [Package['gem'], Exec['rails::rails']]
     }
 
     exec { 'rails::gem-sqlite3':
@@ -54,5 +58,42 @@ class rails {
         path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
         require => [Package['gem', 'libsqlite3-dev'], Exec['rails::rails']]
     }
+
+    exec { 'rails::cucumber-rails':
+        command => 'gem install cucumber-rails',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => [Package['gem'], Exec['rails::rails']]
+    }
+
+    exec { 'rails::database_cleaner':
+        command => 'gem install database_cleaner',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => [Package['gem'], Exec['rails::rails']]
+    }
+
+    exec { 'rails::capybara':
+        command => 'gem install capybara',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => [Package['gem'], Exec['rails::rails']]
+    }
+
+    exec { 'rails::nokogiri':
+        command => 'gem install nokogiri',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => [Package['gem'], Exec['rails::rails']]
+    }
+
+    exec { 'rails::rspec-rails':
+        command => 'gem install rspec-rails -v "~> 3.0"',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => [Package['gem'], Exec['rails::rails']]
+    }
+
+    exec { 'rails::mysql2':
+        command => 'gem install mysql2 -v "~> 0.3.20"',
+        path    => '/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin',
+        require => [Package['gem', 'libmysqlclient-dev'], Exec['rails::rails']]
+    }
+
 
 }
