@@ -22,17 +22,14 @@ class rails {
         fail("Platform not supported in module '${module_name}'.")
     }
 
-    if defined(Package['libsqlite3-dev']) == false {
-        package { 'libsqlite3-dev': ensure => present }
-    }
+    include stdlib
 
-    if defined(Package['libmysqlclient-dev']) == false {
-        package { 'libmysqlclient-dev': ensure => present }
-    }
-
-    if defined(Package['gem']) == false {
-        package { 'gem': ensure => present }
-    }
+    $deps = [
+        'gem',
+        'libsqlite3-dev',
+        'libmysqlclient-dev',
+    ]
+    ensure_packages($deps)
 
     exec { 'rails::rails':
         command => 'gem install rails',
