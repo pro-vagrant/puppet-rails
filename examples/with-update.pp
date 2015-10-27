@@ -1,10 +1,15 @@
 # To install stdlib module run:
-# sudo puppet module install puppetlabs-stdlib
+# sudo puppet apply -e 'include rails'
 #
 
 include stdlib
 
 class { ubuntu: stage => setup }
 
-class { rails: }
+class { ruby: }
+
+class { rails:
+    require => Class['ruby']
+}
+
 
