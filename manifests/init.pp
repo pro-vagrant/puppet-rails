@@ -40,7 +40,7 @@ class rails {
         'capybara',
         'nokogiri',
         { 'rspec-rails' => '~> 3.0' },
-        { 'mysql2'      => '~> 0.3.20' },
+        { 'mysql2'      => '0.3.20' },
         { 'sqlite3'     => '1.3.9' }
     ]
 
