@@ -1,6 +1,6 @@
 {
   "name": "gajdaw-rails",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": "Włodzimierz Gajda",
   "summary": "The module to install ruby on rails framework",
   "license": "MIT",
